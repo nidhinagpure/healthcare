@@ -6,4 +6,4 @@ const MyAppointment = () => {
   )
 }
 
-export default MyAppointment
+export default MyAppointment;

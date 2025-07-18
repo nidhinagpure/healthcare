@@ -10,12 +10,13 @@ import Appointments from './pages/Appointments';
 import MyAppointment from './pages/MyAppointment';
 import MyProfile from './pages/MyProfile';
 import Contact from './pages/Contact';
+import Navbar from './componenets/Navbar';
 
 const App = () => {
   return (
-    <div className='mx-4 sm:mx-[3%]'>
+    <div className='mx-4 sm:mx-[10%]'>
+      <Navbar/>
       <Routes>
-
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<Login />} />
