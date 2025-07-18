@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import logo from '../../../frontend/src/assets/healthcare.png';
 
-import { NavLink, useNavigate,  } from 'react-router-dom';
+import {assets} from '../assets/assets';
+import profile_icon from '../assets/profile_pic.png'
+import dropdwon_icon from '../assets/dropdown_icon.svg';
+
+import { NavLink, useNavigate } from 'react-router-dom';
  
 const Navbar = () => {
     const navigate = useNavigate();
 
-    const [showMenu, setShowMenu ] = useState(false);
+    const [showMenu, setShowMenu ] = useState(true);
     const [token, setToken] = useState(true);
 
   return (
@@ -36,7 +40,23 @@ const Navbar = () => {
         </ul>
         
         <div className='flex items-center gap-4'>
-            <button onClick={()=>navigate('/login')} className='bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block '>Create account</button>
+
+          {
+             token 
+             ?<div className='flex item-center gap-2 cursor-pointer group relative' >
+              <img className='w-8 rounded-full' src={profile_icon} alt=''/>
+              <img className='w-2.5'src={dropdwon_icon}/>
+              <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block' >
+                <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
+                <p onClick={()=>navigate('/myprofile')} className='hover:text-black cursor-pointer '>My Profile</p>
+                <p onClick={()=>navigate('/myappointments')} className='hover:text-black cursor-pointer '>My Appointments</p>
+                <p  onClick={()=>setToken(false)}className='hover:text-black cursor-pointer '>Logout</p>
+                </div>
+              </div>
+             </div>
+             :<button onClick={()=>navigate('/login')} className='bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block '>Create account</button>
+
+          }
         </div>
 
 
