@@ -11,6 +11,7 @@ import MyAppointment from './pages/MyAppointment';
 import MyProfile from './pages/MyProfile';
 import Contact from './pages/Contact';
 import Navbar from './componenets/Navbar';
+import Footer from './componenets/Footer';
 
 const App = () => {
   return (
@@ -28,6 +29,8 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
 
       </Routes>
+
+      <Footer/>
      
 
 

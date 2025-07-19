@@ -1,3 +1,4 @@
+import Banner from '../componenets/Banner';
 import SpecialityMenu from '../componenets/SpecialityMenu';
 import TopDoctor from '../componenets/TopDoctor';
 import Header from './../componenets/Header';
@@ -8,6 +9,7 @@ const Home = () => {
       <Header/>
       <SpecialityMenu />
       <TopDoctor />
+      <Banner />
     </div>
   )
 }
