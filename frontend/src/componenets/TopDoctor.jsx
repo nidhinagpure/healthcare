@@ -1,63 +1,24 @@
-import header_img from './header_img.png'
-import group_profiles from './group_profiles.png'
-import add_icon from './add_icon.svg'
-import admin_logo from './admin_logo.svg'
-import appointment_icon from './appointment_icon.svg'
-import cancel_icon from './cancel_icon.svg'
-import doctor_icon from './doctor_icon.svg'
-import home_icon from './home_icon.svg'
-import people_icon from './people_icon.svg'
-import upload_area from './upload_area.svg'
-import list_icon from './list_icon.svg'
-import tick_icon from './tick_icon.svg'
-import appointments_icon from './appointments_icon.svg'
-import earning_icon from './earning_icon.svg'
-import patients_icon from './patients_icon.svg'
+import React from 'react'
 
-export const assets = {
-    add_icon,
-    admin_logo,
-    appointment_icon,
-    cancel_icon,
-    doctor_icon,
-    upload_area,
-    home_icon,
-    patients_icon,
-    people_icon,
-    list_icon,
-    tick_icon,
-    appointments_icon,
-    earning_icon
-};
+import doc1 from './../assets/doc1.png'
+import doc2 from './../assets/doc2.png'
+import doc3 from './../assets/doc3.png'
+import doc4 from './../assets/doc4.png'
+import doc5 from './../assets/doc5.png'
+import doc6 from './../assets/doc6.png'
+import doc7 from './../assets/doc7.png'
+import doc8 from './../assets/doc8.png'
+import doc9 from './../assets/doc9.png'
+import doc10 from './../assets/doc10.png'
+import doc11 from './../assets/doc11.png'
+import doc12 from './../assets/doc12.png'
+import doc13 from './../assets/doc13.png'
+import doc14 from './../assets/doc14.png'
+import doc15 from './../assets/doc15.png'
+import { useNavigate } from 'react-router-dom'
 
-export const specialityData = [
-    {
-        speciality: 'General physician',
-        image: General_physician
-    },
-    {
-        speciality: 'Gynecologist',
-        image: Gynecologist
-    },
-    {
-        speciality: 'Dermatologist',
-        image: Dermatologist
-    },
-    {
-        speciality: 'Pediatricians',
-        image: Pediatricians
-    },
-    {
-        speciality: 'Neurologist',
-        image: Neurologist
-    },
-    {
-        speciality: 'Gastroenterologist',
-        image: Gastroenterologist
-    },
-]
 
-export const doctors = [
+const doctors = [
     {
         _id: 'doc1',
         name: 'Dr. Richard James',
@@ -269,3 +230,38 @@ export const doctors = [
         }
     },
 ]
+
+
+
+const TopDoctor = () => {
+
+   const navigate = useNavigate()
+
+  return (
+    <div className='flex flex-col item-center gap-4 my-16 text-gray-900 md:mx-10'>
+       <h1 className='text-3xl font-medium'>Top Doctors to Book</h1>
+       <p className='sm:w-1/3 text-center text-sm'>Simply browse through our extensive list of trusted doctors.</p>
+       <div className='w-full grid grid-cols-auto gap-4 pt-5 gap-y-6 px-3 sm:px-0'>
+        {doctors.slice(0,10).map((item,index)=>(
+            <div onClick={()=>navigate(`/appointments/${item._id}`)}className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500' key={index}>
+             <img className='bg-blue-50' src={item.image} alt=''/>
+             <div className='p-4'>
+                <div className='flex item-center gap-2 text-sm text-center text-green-500'>
+                    <p className='w-2 h-2 my-2 bg-green-500 rounded-full'></p><p>Available</p>
+                </div>
+                <p className='text-gray-900 text-lg font-medium'>{item.name}</p>
+                <p className='text-gray-600 text-sm'>{item.speciality}</p>
+             </div>
+            </div>
+
+        ))}
+
+
+       </div> 
+        <button onClick={()=>{navigate('/doctors'); scrollTo(0,0)}}className='bg-blue-50 text-gray-600 px-12 py-3 rounded-full mt-10'>more</button>
+
+    </div>
+  )
+}
+
+export default TopDoctor
