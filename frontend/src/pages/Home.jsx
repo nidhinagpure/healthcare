@@ -1,8 +1,14 @@
 import React from 'react'
 
+import Header from '../componenets/Header';
+import SpecialityMenu from '../componenets/SpecialityMenu';
+
 const Home = () => {
   return (
-    <div></div>
+    <div>
+      <Header />
+      <SpecialityMenu />
+    </div>
   )
 }
 

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import logo from '../../../frontend/src/assets/healthcare.png';
+import logo from "../assets/healthcare.png";
 
-import {assets} from '../assets/assets';
 import profile_icon from '../assets/profile_pic.png'
-import dropdwon_icon from '../assets/dropdown_icon.svg';
 
 import { NavLink, useNavigate } from 'react-router-dom';
  
@@ -55,7 +53,6 @@ const Navbar = () => {
               </div>
              </div>
              :<button onClick={()=>navigate('/login')} className='bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block '>Create account</button>
-
           }
         </div>
 
