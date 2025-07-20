@@ -16,7 +16,7 @@ import doc13 from './../assets/doc13.png';
 import doc14 from './../assets/doc14.png';
 import doc15 from './../assets/doc15.png';
 
-const doctorList = [
+const doctor = [
   {
     _id: 'doc1',
     name: 'Dr. Richard James',
@@ -235,7 +235,7 @@ export const AppContext = createContext()
 const AppContextProvider = (props) => {
 
   const value = {
-    doctor: doctorList
+    doctor,
   }
 
   return (
