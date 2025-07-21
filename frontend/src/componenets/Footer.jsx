@@ -3,7 +3,7 @@ import logo from './../assets/healthcare.png'
 
 const Footer = () => {
   return (
-    <div className='pt-4 md:mx-10 '>
+    <div className=' md:mx-10 '>
        <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
          {/*--- left section */}
          <div>
@@ -33,7 +33,7 @@ const Footer = () => {
         </div>  
          <div>
             <hr />
-            <p className='py-5 sm:py-2 text-sm text-center'>Copyright 2024 @ Greatstack.dev - All Right Reserved.</p>
+            <p className='py-5 sm:py-2 text-sm text-center'>Copyright 2024 @ Nidhi Nagpure - All Right Reserved.</p>
          </div>
     </div>
   )

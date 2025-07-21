@@ -17,7 +17,7 @@ const Login = () => {
    <form className='min-h-[80vh] flex item-center'>
     <div className='flex flex-col gap-3 m-auto item-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-sm shadow-lg'>
       <p className='text-2xl font-semibold'>{state === 'Sign Up' ? "Create Account": "Login" }</p>
-      <p>Please{state === 'Sign Up' ? "sign sp ": "Log in" }Please sign up to book appointment</p>
+      <p>Please{state === 'Sign Up' ? "sign up ": "Log in" }Please sign up to book appointment</p>
       {
         state === "Sign Up" && <div className='w-full'>
         <p >Full Name</p>
