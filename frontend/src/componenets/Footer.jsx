@@ -1,4 +1,3 @@
-import React from 'react'
 import logo from './../assets/healthcare.png'
 
 const Footer = () => {
@@ -8,7 +7,7 @@ const Footer = () => {
          {/*--- left section */}
          <div>
             <img className='w-12 h-12 mb-8'src={logo}/>
-            <p className='w-full md:w-2/3 text-gray-600 leading-6  '>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <p className='w-full md:w-2/3 text-gray-600 leading-6'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 
          </div>
          {/*--- center section ---*/}
