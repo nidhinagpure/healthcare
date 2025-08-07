@@ -3,10 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import Appointment from "./models/Appointment.js"
-import { data } from "react-router";
 dotenv.config();
 
 const app = express();
+const router = express.Router();
 app.use(express.json()); // middleware to create the infomation in post api 
 app.use(cors());
 
@@ -225,7 +225,7 @@ app.put("/bookappointment/:id", async (req, res) => {
 
         // save update details 
 
-        const updatedApppointment = appointmentUpdate.save();
+         appointmentUpdate.save();
 
         return res.status(200).json({
             success: true,
@@ -241,7 +241,7 @@ app.put("/bookappointment/:id", async (req, res) => {
     }
 });
 
-app.delete("bookappointment/:id", async (req, res) => {
+app.delete("/bookappointment/:id", async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -251,7 +251,6 @@ app.delete("bookappointment/:id", async (req, res) => {
         return res.status({
             success:false,
             message:"Appointment Not found",
-            data:null,
         });
       }
 
@@ -279,3 +278,4 @@ app.listen(PORT, () => {
     console.log(`Server is runing on ${PORT}`);
     connectDB();
 });
+
