@@ -239,11 +239,35 @@ app.put("/bookappointment/:id", async (req, res) => {
             error: e.message
         });
     }
-
 });
 
+app.delete("bookappointment/:id", async (req, res) => {
+    const { id } = req.params;
 
+    try {
+      const appointmentDetele =  await Appointment.deleteOne({ _id: id });
 
+      if (appointmentDetele.deletedCount === 0){
+        return res.status({
+            success:false,
+            message:"Appointment Not found",
+            data:null,
+        });
+      }
+
+      return res.status(200).json({
+        success:true,
+        message:"Appointment deleted successfully",
+      });
+
+    } catch (e) {
+            return res.status(500).json({
+                success: false,
+                message: "Server error",
+                data: e.message,
+            });
+    }
+})
 
 app.get("/health", (req, res) => {
     res.status(200).json({ message: "server is running " })
