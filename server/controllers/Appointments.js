@@ -208,7 +208,7 @@ const putAppointment = async (req, res) => {
 
         // save update details 
 
-         appointmentUpdate.save();
+        appointmentUpdate.save();
 
         return res.status(200).json({
             success: true,
@@ -225,37 +225,37 @@ const putAppointment = async (req, res) => {
 };
 
 
-const deleteAppointment =  async (req, res) => {
+const deleteAppointment = async (req, res) => {
     const { id } = req.params;
 
     try {
-      const appointmentDetele =  await Appointment.deleteOne({ _id: id });
+        const appointmentDetele = await Appointment.deleteOne({ _id: id });
 
-      if (appointmentDetele.deletedCount === 0){
-        return res.status({
-            success:false,
-            message:"Appointment Not found",
+        if (appointmentDetele.deletedCount === 0) {
+            return res.status({
+                success: false,
+                message: "Appointment Not found",
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Appointment deleted successfully",
         });
-      }
-
-      return res.status(200).json({
-        success:true,
-        message:"Appointment deleted successfully",
-      });
 
     } catch (e) {
-            return res.status(500).json({
-                success: false,
-                message: "Server error",
-                data: e.message,
-            });
+        return res.status(500).json({
+            success: false,
+            message: "Server error",
+            data: e.message,
+        });
     }
 };
 
-export { 
+export {
     getAppointment,
     postAppointment,
     putAppointment,
     deleteAppointment,
 
- }
+}
