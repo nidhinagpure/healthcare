@@ -137,10 +137,12 @@ export default Appointments; */
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
+import { Link } from "react-router"
 
 import verified_icon from './../assets/verified_icon.svg';
 import info_icon from './../assets/info_icon.svg';
 import RelatedDoctor from '../componenets/RelatedDoctor';
+
 
 const Appointments = () => {
   const { docId } = useParams();
@@ -267,7 +269,9 @@ const Appointments = () => {
             </p>
           ))}
         </div>
+        <Link to="/bookappointment">
         <button className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6 '>Book an Appointment</button>
+         </Link>
       </div>
       <RelatedDoctor docId={docId} speciality={docInfo.speciality} />
     </div>
