@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import Appointment from "./models/Appointment.js"
+import { data } from "react-router";
 dotenv.config();
 
 const app = express();
@@ -21,7 +22,7 @@ app.get("/bookappointment", async (req, res) => {
     const appointment = await Appointment.find();
     return res.status(200).json({
         success: true,
-        data:appointment,
+        data: appointment,
         message: "Appointment booked successfully",
     });
 });
@@ -164,6 +165,82 @@ app.post("/bookappointment", async (req, res) => {
 
 });
 
+app.put("/bookappointment/:id", async (req, res) => {
+
+    const { id } = req.params;
+    const {
+        name,
+        sirname,
+        number,
+        email,
+        address,
+        date,
+        time,
+        day,
+        age,
+        doctorname,
+        decription
+    } = req.body;
+
+    if (!/^\d{10}$/.test(number)) {
+        return res.status(400).json({
+            success: false,
+            message: "Mobile number must be exactly 10 digits",
+            data: null,
+        });
+    };
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid email address",
+            data: null,
+        });
+    }
+    try {
+
+        const appointmentUpdate = await Appointment.findById(id);
+
+        if (!appointmentUpdate) {
+            return res.status(404).json({
+                success: false,
+                message: "Appointment not found",
+                data: null,
+            });
+        }
+
+        // Update details here
+
+        appointmentUpdate.name = name;
+        appointmentUpdate.sirname = sirname;
+        appointmentUpdate.number = number;
+        appointmentUpdate.email = email;
+        appointmentUpdate.address = address;
+        appointmentUpdate.date = date;
+        appointmentUpdate.day = day;
+        appointmentUpdate.time = time;
+        appointmentUpdate.age = age;
+        appointmentUpdate.doctorname = doctorname;
+        appointmentUpdate.decription = decription;
+
+        // save update details 
+
+        const updatedApppointment = appointmentUpdate.save();
+
+        return res.status(200).json({
+            success: true,
+            data: appointmentUpdate,
+            message: "Appointment details update successfully!"
+        });
+    } catch (e) {
+        return res.status(500).json({
+            success: false,
+            message: "Server error",
+            error: e.message
+        });
+    }
+
+});
 
 
 
