@@ -12,7 +12,7 @@ import MyProfile from './pages/MyProfile';
 import Contact from './pages/Contact';
 import Navbar from './componenets/Navbar';
 import Footer from './componenets/Footer';
-import BookingOrd from './pages/BookingOrd.js';
+import BookingOrd from './pages/BookingOrd';
 
 const App = () => {
   return (
