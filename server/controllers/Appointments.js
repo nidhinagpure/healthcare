@@ -11,7 +11,8 @@ const getAppointment = async (req, res) => {
 };
 
 const postAppointment = async (req, res) => {
-    const {
+    try{
+        const {
         name,
         sirname,
         number,
@@ -145,7 +146,14 @@ const postAppointment = async (req, res) => {
         data: savedAppointment,
         message: "book appointment succesfully",
     });
-
+    }catch(e){
+        console.error("Error Booking appointment:", error);
+        return res.status(500).json({
+            success:false,
+            message:"Server error while booking appointment",
+            error:error.message,
+        });
+    }
 };
 
 const putAppointment = async (req, res) => {

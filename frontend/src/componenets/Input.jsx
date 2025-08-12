@@ -1,5 +1,5 @@
 
-function Input({ type, placeholder, value, onchange, size, lable = "" }) {
+function Input({ type, placeholder, value, onChange, size, lable = "" }) {
 
     const SIZE_CLASSES = {
         sm: "text-sm py-2 px-2 rounded-sm mb-2",
@@ -15,14 +15,12 @@ function Input({ type, placeholder, value, onchange, size, lable = "" }) {
                 placeholder={placeholder}
                 value={value}
                 onChange={(e) => {
-                  onchange(e.target.value);
+                    onChange(e.target.value);
                 }}
-                className={`text-md border-2 border-gray-300 w-70 focus-none outline-none ${SIZE_CLASSES[size]}`}
+                className={`text-md border-2 border-gray-500 w-74 focus-none outline-none ${SIZE_CLASSES[size]}`}
             />
-
-
         </div>
-    ) 
+    )
 }
 
 export default Input

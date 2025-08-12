@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Input from '../componenets/input';
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const BookingOrd = () => {
-  const [newShow, setNewShow] = useState({
+  const [newShow, setNewShow] = useState[{
     name: "",
     sirname: "",
     number: "",
@@ -15,77 +17,106 @@ const BookingOrd = () => {
     doctorname: "",
     decription: "",
     age: "",
-  });
+  }]
+
+  const addAppointment = async () => {
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/bookappointment`, {
+      name: newShow.name,
+      sirname: newShow.sirname,
+      number: newShow.number,
+      email: newShow.email,
+      address: newShow.address,
+      date: newShow.date,
+      time: newShow.time,
+      day: newShow.day,
+      doctorname: newShow.doctorname,
+      decription: newShow.decription,
+      age: newShow.age,
+    });
+
+    toast.success(response.data.data);
+  }
+
+
+
   return (
     <>
-      <h1 className='text-xl text-center font-bold bg-blue-200 p-2'>Book Your Appointment Now </h1>
-      <div className=' flex flex-raw justify-evenly m-10'>
-
+      <h1 className='text-xl text-center font-bold bg-blue-100 p-2'>BOOK  YOUR  APPOINTMENT  NOW</h1>
+      <div className=' flex flex-raw justify-evenly m-10 bg-indigo-50 p-6 mt-16 broder-blue-800 border-4'>
         <div>
           <Input
             type="text"
             placeholder="Enter Name"
             value={newShow.name}
-            onChange={(val) => { setNewShow({ ...newShow, name: val }) }}
+            onChange={(val) =>  setNewShow({ ...newShow, name: val }) }
             size="lg"
           />
           <Input
             type="text"
             placeholder="Enter Sirname"
             value={newShow.sirname}
-            onChange={(val) => { setNewShow({ ...newShow, sirname: val }) }}
+            onChange={(val) =>  setNewShow({ ...newShow, sirname: val }) }
             size="lg"
           />
           <Input
             type="text"
             placeholder="Enter Email"
             value={newShow.email}
-            onChange={(val) => { setNewShow({ ...newShow, email: val }) }}
+            onChange={(val) => setNewShow({ ...newShow, email: val }) }
             size="lg"
           />
           <Input
             type="text"
             placeholder="Enter Phone No."
-            value={newShow.Phone}
-            onChange={(val) => { setNewShow({ ...newShow, name: val }) }}
+            value={newShow.number}
+            onChange={(val) => setNewShow({ ...newShow, number: val }) }
             size="lg"
           />
 
         </div>
 
-        <div className='flex-col'>
-
+        <div className=''>
           <Input
             type="text"
-            placeholder="Enter Addresses"
-            value={newShow.address}
-            onChange={(val) => { setNewShow({ ...newShow, address: val }) }}
+            placeholder="Enter Age"
+            value={newShow.age}
+            onChange={(val) =>  setNewShow({ ...newShow, age: val }) }
             size="lg"
           />
+          <Input
+            type="text"
+            placeholder="Enter Doctor Name"
+            value={newShow.doctorname}
+            onChange={(val) =>  setNewShow({ ...newShow, doctorname: val }) }
+            size="lg"
+          />
+          <Input
+            type="text"
+            placeholder="Description of Symptoms"
+            value={newShow.decription}
+            onChange={(val) =>  setNewShow({ ...newShow, decription: val }) }
+            size="lg"
+          />
+          <Input
+            type="text"
+            placeholder="Enter Address"
+            value={newShow.address}
+            onChange={(val) =>  setNewShow({ ...newShow, address: val }) }
+            size="lg"
+          />
+        </div>
+        <div>
           <Input
             type="date"
             placeholder="Enter Date"
             value={newShow.date}
-            onChange={(val) => { setNewShow({ ...newShow, date: val }) }}
-            size="lg"
-          />
-          <Input
-            type="time"
-            placeholder="Enter Name"
-            value={newShow.time}
-            onChange={(val) => { setNewShow({ ...newShow, time: val }) }}
-            size="lg"
-          />
-          <Input
-            type="day"
-            placeholder="Enter Name"
-            value={newShow.day}
-            onChange={(val) => { setNewShow({ ...newShow, day: val }) }}
+            onChange={(val) => setNewShow({ ...newShow, date: val }) }
             size="lg"
           />
           <select
             value={newShow.day}
             onChange={(e) => setNewShow({ ...newShow, day: e.target.value })}
+            className='py-2 px-6 rounded-lg mt-10 border border-2 border-gray-400'
           >
             <option value="">Select Day</option>
             <option value="Monday">Monday</option>
@@ -96,18 +127,22 @@ const BookingOrd = () => {
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
           </select>
-        </div>
-        <div>
+
           <Input
-            type="text"
+            type="time"
             placeholder="Enter Name"
-            value={newShow.name}
-            onChange={(val) => { setNewShow({ ...newShow, name: val }) }}
+            value={newShow.time}
+            onChange={(val) => setNewShow({ ...newShow, time: val })}
             size="lg"
           />
+          
+          <button className='py-2 px-14 rounded-full bg-blue-500 mt-12 text-white'
+            onClick={() => {
+              addAppointment();
+            }}>Submit</button>
 
         </div>
-
+        <Toaster />
       </div>
 
 
