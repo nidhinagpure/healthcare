@@ -5,6 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const BookingOrd = () => {
+
     const [newShow, setNewShow] = useState({
       name: "",
       sirname: "",
@@ -22,7 +23,8 @@ const BookingOrd = () => {
     const addAppointment = async () => {
       try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/bookappointment`, {
+        `${import.meta.env.VITE_API_URL}/bookappointment`,
+      {
         name: newShow.name,
         sirname: newShow.sirname,
         number: newShow.number,
@@ -34,13 +36,13 @@ const BookingOrd = () => {
         doctorname: newShow.doctorname,
         decription: newShow.decription,
         age: newShow.age,
-       } );
+       }
+    );
     toast.success(response.data.message);
-  } catch (e) {
-    toast.error(e.response?.data?.message || "Failed to book appointment");
+} catch (e){
+    toast.error(e.response.data.message);
   }
 };
-
   return (
     <>
       <h1 className='text-xl text-center font-bold bg-blue-100 p-2'>
