@@ -21,7 +21,7 @@ function BookingOrd () {
 
   const addAppointment = async () => {
     try{
-    const response = await axios.post(`${import.meta.env.VITE_API_URL}/bookappointment`, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/bookappointment`, {
         name: newShow.name,
         sirname: newShow.sirname,
         number: newShow.number,
@@ -34,10 +34,12 @@ function BookingOrd () {
         decription: newShow.decription,
         age: newShow.age,
       });
-      toast.success(response.data.message || "seunxnx");
-    }catch (e) {
-      toast.error(e.response.data.message || "dhjkki3");
+      toast.success(response.data.message);
+
+    }catch(e){
+      toast.error(e.response.data.message);
     }
+    
   };
   return (
     <>
@@ -144,7 +146,7 @@ function BookingOrd () {
             size="lg"
           />
 
-          <button className='py-2 px-14 rounded-full bg-blue-500 mt-12 text-white'
+          <button className='py-2 px-14 rounded-full bg-blue-500 mt-12 text-white hover:bg-blue-400'
             onClick={() => {
               addAppointment();
             }}>Submit</button>
