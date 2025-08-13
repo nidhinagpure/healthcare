@@ -34,17 +34,19 @@ const BookingOrd = () => {
         doctorname: newShow.doctorname,
         decription: newShow.decription,
         age: newShow.age,
-      });
+       } );
     toast.success(response.data.message);
-  }
-  }catch (e) {
+  } catch (e) {
     toast.error(e.response?.data?.message || "Failed to book appointment");
   }
 };
 
   return (
     <>
-      <h1 className='text-xl text-center font-bold bg-blue-100 p-2'>BOOK  YOUR  APPOINTMENT  NOW</h1>
+      <h1 className='text-xl text-center font-bold bg-blue-100 p-2'>
+      BOOK  YOUR  APPOINTMENT  NOW
+      </h1>
+
       <div className=' flex flex-raw justify-evenly m-10 bg-indigo-50 p-6 mt-16 broder-blue-800 border-4'>
 
         <div>
@@ -110,6 +112,7 @@ const BookingOrd = () => {
             size="lg"
           />
         </div>
+
         <div>
           <Input
             type="date"
@@ -142,15 +145,10 @@ const BookingOrd = () => {
           />
 
           <button className='py-2 px-14 rounded-full bg-blue-500 mt-12 text-white'
-            onClick={() => {
-              addAppointment();
-            }}>Submit</button>
-
-        </div>
+            onClick={addAppointment}>Submit</button>
       </div>
-        <Toaster />
-        </div>
-    
+        <Toaster />  
+      </div>  
     </>
   );
 };
