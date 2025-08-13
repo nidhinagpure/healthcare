@@ -4,27 +4,24 @@ import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 
 
-const BookingOrd = () => {
+function BookingOrd () {
+   const [newShow, setNewShow] = useState({
+    name: "",
+    sirname: "",
+    number: "",
+    email: "",
+    address: "",
+    date: "",
+    time: "",
+    day: "",
+    doctorname: "",
+    decription: "",
+    age: "",
+  });
 
-    const [newShow, setNewShow] = useState({
-      name: "",
-      sirname: "",
-      number: "",
-      email: "",
-      address: "",
-      date: "",
-      time: "",
-      day: "",
-      doctorname: "",
-      decription: "",
-      age: "",
-    });
-
-    const addAppointment = async () => {
-      try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/bookappointment`,
-      {
+  const addAppointment = async () => {
+    try{
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/bookappointment`, {
         name: newShow.name,
         sirname: newShow.sirname,
         number: newShow.number,
@@ -36,23 +33,24 @@ const BookingOrd = () => {
         doctorname: newShow.doctorname,
         decription: newShow.decription,
         age: newShow.age,
-       }
-    );
-    toast.success(response.data.message);
-} catch (e){
-    toast.error(e.response.data.message);
-  }
-};
+      });
+      toast.success(response.data.message || "seunxnx");
+    }catch (e) {
+      toast.error(e.response.data.message || "dhjkki3");
+    }
+  };
   return (
     <>
+      <Toaster />
+
       <h1 className='text-xl text-center font-bold bg-blue-100 p-2'>
-      BOOK  YOUR  APPOINTMENT  NOW
+        BOOK  YOUR  APPOINTMENT  NOW
       </h1>
 
       <div className=' flex flex-raw justify-evenly m-10 bg-indigo-50 p-6 mt-16 broder-blue-800 border-4'>
 
         <div>
-        
+
           <Input
             type="text"
             placeholder="Enter Name"
@@ -147,10 +145,11 @@ const BookingOrd = () => {
           />
 
           <button className='py-2 px-14 rounded-full bg-blue-500 mt-12 text-white'
-            onClick={addAppointment}>Submit</button>
+            onClick={() => {
+              addAppointment();
+            }}>Submit</button>
+        </div>
       </div>
-        <Toaster />  
-      </div>  
     </>
   );
 };
