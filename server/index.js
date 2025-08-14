@@ -7,6 +7,7 @@ import {
     postAppointment,
     putAppointment,
     deleteAppointment,
+    getProfile,
 } from "./controllers/Appointments.js";
 dotenv.config();
 
@@ -33,6 +34,8 @@ app.post("/bookappointment", postAppointment);
 app.put("/bookappointment/:id", putAppointment);
 
 app.delete("/bookappointment/:id", deleteAppointment);
+
+app.get("myprofile", getProfile);
 
 app.get("/health", (req, res) => {
     res.status(200).json({ message: "server is running " })

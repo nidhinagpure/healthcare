@@ -11,7 +11,7 @@ function MyProfile() {
     name: "",
     number: "",
     email: "",
-    address: "",
+    city: "",
     gender: "",
     age: "",
   });
@@ -21,8 +21,8 @@ function MyProfile() {
         name: newProfile.name,
         number: newProfile.number,
         email: newProfile.email,
-        address:newProfile.address,
-        decription: newProfile.decription,
+        city:newProfile.address,
+        gender: newProfile.gender,
         age: newProfile.age,
       });
       toast.success(response.data.data);
@@ -69,7 +69,7 @@ function MyProfile() {
             type="number"
             placeholder="Enter age"
             value=""
-            onChange={(val) => setNewProfile({ ...newProfile, address: val })}
+            onChange={(val) => setNewProfile({ ...newProfile, city: val })}
             size="lg"
           />
           <Input
