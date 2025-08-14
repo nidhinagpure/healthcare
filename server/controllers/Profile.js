@@ -14,7 +14,6 @@ const postProfile = async (req, res) => {
     try {
         const { 
             name,
-            image,
             email,
             city,
             number,
@@ -28,14 +27,6 @@ const postProfile = async (req, res) => {
                 data: null,
             });
         };
-
-        if (!image) {
-            return res.status(400).json({
-                success: false,
-                message: "We need your image to continue",
-                data: null,
-            });
-        }
         if (!number) {
             return res.status(400).json({
                 success: false,
@@ -80,7 +71,6 @@ const postProfile = async (req, res) => {
             number,
             age,
             gender,
-            image,
         });
 
         const saveProfile = await newProfile.save();

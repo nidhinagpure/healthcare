@@ -14,18 +14,19 @@ function MyProfile() {
     city: "",
     gender: "",
     age: "",
+    
   });
   const addProfileDetails = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/bookappointment`, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/myprofile`, {
         name: newProfile.name,
         number: newProfile.number,
         email: newProfile.email,
-        city:newProfile.address,
+        city:newProfile.city,
         gender: newProfile.gender,
         age: newProfile.age,
       });
-      toast.success(response.data.data);
+      toast.success(response.data.message);
     }catch(e){
       toast.error(e.response.data.message);
     }
@@ -42,7 +43,7 @@ function MyProfile() {
           <Input
             type="text"
             placeholder="Enter Name"
-            value=""
+            value={newProfile.name}
             onChange={(val) => setNewProfile({ ...newProfile, name: val })}
             size="lg"
 
@@ -50,14 +51,14 @@ function MyProfile() {
           <Input
             type="tel"
             placeholder="Phone no."
-            value=""
+            value={newProfile.number}
             onChange={(val) => setNewProfile({ ...newProfile, number: val })}
             size="lg"
           />
           <Input
             type="email"
             placeholder="Enter email"
-            value=""
+            value={newProfile.email}
             onChange={(val) => setNewProfile({ ...newProfile, email: val })}
             size="lg"
           />
@@ -66,23 +67,23 @@ function MyProfile() {
 
         <div>
           <Input
-            type="number"
-            placeholder="Enter age"
-            value=""
+            type="text"
+            placeholder="Enter city"
+            value={newProfile.city}
             onChange={(val) => setNewProfile({ ...newProfile, city: val })}
             size="lg"
           />
           <Input
             type="text"
-            placeholder="Enter Address"
-            value=""
+            placeholder="Enter age"
+            value={newProfile.age}
             onChange={(val) =>setNewProfile({ ...newProfile, age: val })}
             size="lg"
           />
           <Input
             type="text"
             placeholder="Enter gender"
-            value=""
+            value={newProfile.gender}
             onChange={(val) => setNewProfile({ ...newProfile, gender: val })}
             size="lg"
           />

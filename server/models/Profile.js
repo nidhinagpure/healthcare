@@ -4,7 +4,7 @@ const createProfile = new Schema({
     name: String,
     email: String,
     number: String,
-    city: String,
+    gender: String,
     city: String,
     age: String,
 });
