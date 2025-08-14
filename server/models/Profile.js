@@ -1,6 +1,5 @@
 import { Schema, model } from "mongoose";
 
-
 const myProfile = new Schema({
     name: String,
     email: String,
