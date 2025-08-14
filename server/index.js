@@ -7,7 +7,6 @@ import {
     postAppointment,
     putAppointment,
     deleteAppointment,
-    getProfile,
 } from "./controllers/Appointments.js";
 
 import {
@@ -40,9 +39,9 @@ app.put("/bookappointment/:id", putAppointment);
 
 app.delete("/bookappointment/:id", deleteAppointment);
 
-app.get("myprofile", getProfile);
+app.get("/myprofile", getProfile);
 
-app.post("myProfile", postProfile);
+app.post("/myProfile", postProfile);
 
 app.get("/health", (req, res) => {
     res.status(200).json({ message: "server is running " })

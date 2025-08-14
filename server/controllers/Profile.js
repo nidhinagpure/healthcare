@@ -1,19 +1,19 @@
-import { json } from "express";
-import Profile from "../models/Profile";
+import createProfile from "../models/Profile.js";
 
 
 const getProfile = async (req, res) => {
-    const myProfile = await Profile.find();
+    const myprofile = await createProfile.find();
     return res.status(200).json({
         success: true,
-        data: myProfile,
+        data: myprofile,
         message: "Done",
     });
 };
 
 const postProfile = async (req, res) => {
     try {
-        const { name,
+        const { 
+            name,
             image,
             email,
             city,
@@ -71,8 +71,9 @@ const postProfile = async (req, res) => {
                 data: null,
             });
         };
+         
 
-        const newProfile = new Profile({
+        const newProfile = new createProfile({
             name,
             email,
             city,

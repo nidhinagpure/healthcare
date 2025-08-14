@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const myProfile = new Schema({
+const createProfile = new Schema({
     name: String,
     email: String,
     number: String,
@@ -9,6 +9,6 @@ const myProfile = new Schema({
     age: String,
 });
 
-const Profile = model("Profile", myProfile );
+const Profile = model("Profile", createProfile );
 
 export default Profile; 
