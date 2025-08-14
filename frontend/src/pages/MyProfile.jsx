@@ -7,23 +7,23 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 function MyProfile() {
-  const [newShow, setNewShow] = useState({
+  const [newProfile, setNewProfile] = useState({
     name: "",
     number: "",
     email: "",
     address: "",
-    decription: "",
+    gender: "",
     age: "",
   });
   const addProfileDetails = async () => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/bookappointment`, {
-        name: newShow.name,
-        number: newShow.number,
-        email: newShow.email,
-        address: newShow.address,
-        decription: newShow.decription,
-        age: newShow.age,
+        name: newProfile.name,
+        number: newProfile.number,
+        email: newProfile.email,
+        address:newProfile.address,
+        decription: newProfile.decription,
+        age: newProfile.age,
       });
       toast.success(response.data.data);
     }catch(e){
@@ -36,14 +36,14 @@ function MyProfile() {
       <div className='flex justify-center gap-20 mt-14 bg-blue-200 p-20 border-2 border-blue-500'>
         <div className=' mt-10 '>
           <img src={Nidhi} className='w-40 h-40  mb-4 rounded-full bg-red-200' />
-          <span className='font-bold text-2xl tracking-wider underline  pr-4'>{newShow.name}</span>
+          <span className='font-bold text-2xl tracking-wider underline  pr-4'>{newProfile.name}</span>
         </div>
         <div>
           <Input
             type="text"
             placeholder="Enter Name"
             value=""
-            onChange={(val) => setNewShow({ ...newShow, name: val })}
+            onChange={(val) => setNewProfile({ ...newProfile, name: val })}
             size="lg"
 
           />
@@ -51,14 +51,14 @@ function MyProfile() {
             type="tel"
             placeholder="Phone no."
             value=""
-            onChange={(val) => setNewShow({ ...newShow, name: val })}
+            onChange={(val) => setNewProfile({ ...newProfile, number: val })}
             size="lg"
           />
           <Input
             type="email"
             placeholder="Enter email"
             value=""
-            onChange={(val) => setNewShow({ ...newShow, name: val })}
+            onChange={(val) => setNewProfile({ ...newProfile, email: val })}
             size="lg"
           />
 
@@ -69,21 +69,21 @@ function MyProfile() {
             type="number"
             placeholder="Enter age"
             value=""
-            onChange={(val) => setNewShow({ ...newShow, name: val })}
+            onChange={(val) => setNewProfile({ ...newProfile, address: val })}
             size="lg"
           />
           <Input
             type="text"
             placeholder="Enter Address"
             value=""
-            onChange={(val) => setNewShow({ ...newShow, name: val })}
+            onChange={(val) =>setNewProfile({ ...newProfile, age: val })}
             size="lg"
           />
           <Input
             type="text"
             placeholder="Enter gender"
             value=""
-            onChange={(val) => setNewShow({ ...newShow, name: val })}
+            onChange={(val) => setNewProfile({ ...newProfile, gender: val })}
             size="lg"
           />
         </div>
